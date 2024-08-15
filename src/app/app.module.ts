@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavigationBarModule } from 'src/modules/navigation-bar/navigation-bar.module';
 import { SearchModule } from 'src/modules/search/search.module';
+import { ButtonsModule } from 'src/modules/buttons/buttons.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SearchModule } from 'src/modules/search/search.module';
     HttpClientModule,
     NavigationBarModule,
     SearchModule,
+    ButtonsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

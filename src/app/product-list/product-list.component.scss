@@ -29,6 +29,15 @@
       font-size: u.rem(20);
       font-weight: 600;
     }
+
+    .product-name {
+      cursor: pointer;
+      color: var(--blue-color-hover);
+      text-decoration: underline;
+      //   &:hover {
+      //     text-decoration: underline;
+      //   }
+    }
   }
 }
 

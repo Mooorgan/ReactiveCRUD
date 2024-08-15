@@ -1,0 +1,35 @@
+@use "../../scss/utils" as u;
+
+.product-form-container {
+  padding: u.rem(24) u.rem(42);
+}
+.product-form {
+  display: grid;
+  justify-content: center;
+
+  > form {
+    padding: u.rem(32) u.rem(26);
+    background: var(--orange-color-100);
+    max-width: u.rem(1800);
+    border: 1px solid var(--color-foundation-grey75);
+    border-radius: u.rem(12);
+    display: grid;
+    gap: u.rem(24);
+  }
+}
+
+.details-heading {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: u.rem(8);
+  margin-block-end: u.rem(40);
+  > svg {
+    align-self: center;
+    cursor: pointer;
+  }
+  &__heading {
+    font-weight: 700;
+    font-size: u.rem(24);
+    color: var(--color-foundation-grey300);
+  }
+}

@@ -1,4 +1,4 @@
-@use '../utils' as u;
+@use "../utils" as u;
 
 .sona-button {
   cursor: pointer;
@@ -30,15 +30,44 @@
     font-size: u.rem(24);
   }
 
-  &__input {
+  input,
+  textarea {
     border-radius: u.rem(12);
     padding: u.rem(16) u.rem(10);
     background: var(--grey-color-50);
-    border: none;
+    border: 1px solid var(--color-foundation-grey75);
     &::placeholder {
       font-weight: 600;
       font-size: u.rem(18);
       color: var(--placeholder-grey);
     }
+  }
+}
+
+@mixin red-button() {
+  cursor: pointer;
+  background: none;
+  font-weight: 700;
+  font-size: u.rem(18);
+  color: var(--color-foundation-red300);
+  border: none;
+}
+.sona-admin-form-button-container {
+  display: grid;
+
+  &__buttons {
+    justify-self: end;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0 u.rem(16);
+
+    > button:first-child {
+      @include red-button();
+    }
+
+    //   >button:last-child{
+    //   cursor: pointer;
+
+    // }
   }
 }
