@@ -3,9 +3,10 @@
 </div> -->
 <section class="product-list">
   <h2 class="product-list__heading">Search and Buy Products</h2>
-  <app-product-search></app-product-search>
+  <app-product-search (searchWords)="handleSearch($event)"></app-product-search>
 
   <div *ngIf="products$ | async as products" class="table-body">
+    <!-- <div class="table-body"> -->
     <div class="table-body__table">
       <!-- <div class="row"> -->
       <span class="heading">S.N.</span>
@@ -13,10 +14,7 @@
       <span class="heading">Price</span>
       <span class="heading">Action</span>
       <!-- </div> -->
-      <ng-container
-        class="row"
-        *ngFor="let product of products.products; index as i"
-      >
+      <ng-container class="row" *ngFor="let product of products; index as i">
         <span>
           {{ i + 1 }}
         </span>
@@ -24,10 +22,10 @@
           class="product-name"
           (click)="navigateToProductDetails(product.id)"
         >
-          {{ product.name | titlecase }}
+          {{ product?.name | titlecase }}
         </span>
         <span>
-          <p>{{ product.price }}</p>
+          <p>{{ product?.price }}</p>
         </span>
         <span>
           <div class="buttons-container">
