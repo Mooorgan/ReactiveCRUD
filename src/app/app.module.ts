@@ -13,6 +13,7 @@ import { NavigationBarModule } from 'src/modules/navigation-bar/navigation-bar.m
 import { SearchModule } from 'src/modules/search/search.module';
 import { ButtonsModule } from 'src/modules/buttons/buttons.module';
 import { ValidationMessageModule } from 'src/modules/validation-message/validation-message.module';
+import { HightlightDirective } from './directives/hightlight.directive';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ValidationMessageModule } from 'src/modules/validation-message/validati
     ProductDetailComponent,
     ProductEditComponent,
     ProductSearchComponent,
+    HightlightDirective,
   ],
   imports: [
     BrowserModule,
