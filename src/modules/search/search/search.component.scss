@@ -1,0 +1,35 @@
+@use "../../../scss/utils" as u;
+
+:host {
+  display: inline-block;
+}
+
+.search-container {
+  display: grid;
+  grid-template-columns: 1fr u.rem(21);
+  border: 1px solid var(--color-foundation-grey75);
+  border-radius: u.rem(12);
+  // justify-content: space-between;
+  column-gap: u.rem(60);
+  padding: u.rem(12) u.rem(12);
+  background: var(--white);
+
+  &__input {
+    font-size: u.rem(14);
+    // background: transparent;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: var(--color-placeholder1);
+      font-weight: 700;
+    }
+  }
+
+  &__search {
+    width: u.rem(24);
+    height: u.rem(24);
+    cursor: pointer;
+    justify-self: end;
+  }
+}

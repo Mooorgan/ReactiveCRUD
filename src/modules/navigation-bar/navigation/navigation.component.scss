@@ -1,0 +1,28 @@
+@use "../../../scss/utils" as u;
+
+.navigation {
+  display: grid;
+  padding: u.rem(8) u.rem(18);
+  justify-content: space-between;
+  grid-template-columns: 1fr auto;
+  background: var(--orange-color-100);
+  border-bottom: 1px solid var(--grey-color-50);
+  > a > img {
+    cursor: pointer;
+  }
+
+  &__items {
+    align-self: center;
+    font-weight: 600;
+    font-size: u.rem(20);
+    color: var(--grey-color-200);
+    display: grid;
+    gap: 0 u.rem(40);
+    // grid-template-columns: repeat(2, auto);
+    cursor: pointer;
+
+    a {
+      align-self: center;
+    }
+  }
+}

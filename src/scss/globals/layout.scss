@@ -1,0 +1,44 @@
+@use '../utils' as u;
+
+.sona-button {
+  cursor: pointer;
+  color: var(--white);
+  font-size: u.rem(20);
+  font-weight: 700;
+  // border: none;
+  // background: none;
+  display: inline-flex;
+  justify-content: center;
+  border-radius: u.rem(12);
+  background: var(--blue-color-300);
+  padding: u.rem(16.5) u.rem(16);
+  &:hover {
+    background: var(--blue-color-hover);
+  }
+  &:active {
+    background: var(--blue-color-active);
+  }
+}
+
+.form-control {
+  display: grid;
+  gap: u.rem(8) 0;
+
+  &__label {
+    color: var(--grey-color-200);
+    font-weight: 700;
+    font-size: u.rem(24);
+  }
+
+  &__input {
+    border-radius: u.rem(12);
+    padding: u.rem(16) u.rem(10);
+    background: var(--grey-color-50);
+    border: none;
+    &::placeholder {
+      font-weight: 600;
+      font-size: u.rem(18);
+      color: var(--placeholder-grey);
+    }
+  }
+}

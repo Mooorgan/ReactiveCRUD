@@ -1,0 +1,16 @@
+<div class="search-container">
+  <input
+    #search
+    type="text"
+    class="search-container__input"
+    [attr.placeholder]="placeholderString"
+    (input)="onChange($any($event.target).value)"
+    (blur)="onTouched()"
+    [disabled]="disabled"
+  />
+  <img
+    src="/assets/icons/search.svg"
+    alt="Search Icon"
+    class="search-container__search"
+  />
+</div>
