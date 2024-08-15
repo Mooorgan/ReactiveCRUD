@@ -1,0 +1,6 @@
+<div
+  *ngFor="let error of errors | keyvalue; trackBy:trackByFn"
+  class="text-danger"
+>
+  {{ error.key | errorMessage:error.value }}
+</div>

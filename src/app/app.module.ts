@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavigationBarModule } from 'src/modules/navigation-bar/navigation-bar.module';
 import { SearchModule } from 'src/modules/search/search.module';
 import { ButtonsModule } from 'src/modules/buttons/buttons.module';
+import { ValidationMessageModule } from 'src/modules/validation-message/validation-message.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ButtonsModule } from 'src/modules/buttons/buttons.module';
     NavigationBarModule,
     SearchModule,
     ButtonsModule,
+    ValidationMessageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

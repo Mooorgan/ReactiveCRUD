@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ProductService } from '../services/product.service';
+
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from '../services/product/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -16,13 +17,13 @@ export class ProductListComponent {
     private ar: ActivatedRoute,
   ) {}
 
-  editProduct(id: number) {
+  editProduct(id: string) {
     this.router.navigate([id, 'edit'], { relativeTo: this.ar });
   }
 
-  deleteProduct(id: number) {}
+  deleteProduct(id: string) {}
 
-  navigateToProductDetails(id: number) {
+  navigateToProductDetails(id: string) {
     this.router.navigate([id], { relativeTo: this.ar });
   }
 }

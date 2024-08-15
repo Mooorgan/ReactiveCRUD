@@ -87,3 +87,24 @@
     color: var(--color-foundation-grey300);
   }
 }
+
+.blue-button {
+  cursor: pointer;
+  color: var(--white);
+  font-size: u.rem(20);
+  font-weight: 700;
+  border-radius: u.rem(12);
+  background: var(--blue-color-300);
+  padding: u.rem(16.5) u.rem(16);
+  &:hover {
+    background: var(--blue-color-hover);
+  }
+  &:active {
+    background: var(--blue-color-active);
+  }
+}
+
+.text-danger {
+  color: red;
+  font-size: u.rem(16);
+}
