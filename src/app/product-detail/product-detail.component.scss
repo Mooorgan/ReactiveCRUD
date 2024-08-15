@@ -1,0 +1,22 @@
+@use "../../scss/utils" as u;
+
+.container {
+  padding: u.rem(16) u.rem(24);
+}
+
+.product-details-container {
+  padding: u.rem(24) u.rem(32);
+  display: grid;
+  justify-content: center;
+  //   align-content: center;
+  &__details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: u.rem(16) u.rem(24);
+
+    &__label {
+      font-weight: 600;
+      font-size: u.rem(18);
+    }
+  }
+}

@@ -21,4 +21,8 @@ export class ProductListComponent {
   }
 
   deleteProduct(id: number) {}
+
+  navigateToProductDetails(id: number) {
+    this.router.navigate([id], { relativeTo: this.ar });
+  }
 }

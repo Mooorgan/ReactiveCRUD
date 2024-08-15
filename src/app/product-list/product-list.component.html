@@ -20,7 +20,10 @@
         <span>
           {{ i + 1 }}
         </span>
-        <span class="product-name">
+        <span
+          class="product-name"
+          (click)="navigateToProductDetails(product.id)"
+        >
           {{ product.name | titlecase }}
         </span>
         <span>
