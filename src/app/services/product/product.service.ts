@@ -15,6 +15,7 @@ import {
   share,
   shareReplay,
   switchMap,
+  tap,
 } from 'rxjs';
 import {
   Product,
@@ -44,9 +45,9 @@ export class ProductService {
     switchMap((word) => {
       return this.productsCalculations$.pipe(
         map((products) => {
-          const regex = new RegExp(`${word}`, 'gi');
           const filteredArray: Product[] = [];
           for (const p of products) {
+            const regex = new RegExp(`${word}`, 'gi');
             if (regex.test(p.name)) {
               filteredArray.push(p);
             }
@@ -80,7 +81,15 @@ export class ProductService {
   }
 
   readonly productsCalculations$: Observable<Product[]> = merge(
-    this.loadAllProducts$.pipe(map(addHandler)),
+    this.loadAllProducts$.pipe(
+      tap((d) => {
+        console.log(d);
+      }),
+      map(addHandler),
+      tap((d) => {
+        console.log(d);
+      })
+    ),
     this.addProduct$.pipe(map(addHandler)),
     this.editProduct$.pipe(map(editHandler)),
     this.deleteProduct$.pipe(map(deleteHandler))
@@ -89,10 +98,12 @@ export class ProductService {
       (products: Product[], stateHandlerFn) => stateHandlerFn(products),
       []
     ),
-
+    tap((d) => {
+      console.log(d);
+    }),
     shareReplay({
       bufferSize: 1,
-      refCount: true,
+      refCount: false,
     })
   );
 
