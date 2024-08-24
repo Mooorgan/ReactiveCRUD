@@ -15,6 +15,7 @@ import {
   share,
   shareReplay,
   switchMap,
+  take,
   tap,
 } from 'rxjs';
 import {
@@ -44,6 +45,7 @@ export class ProductService {
     distinctUntilChanged(),
     switchMap((word) => {
       return this.productsCalculations$.pipe(
+        take(1),
         map((products) => {
           const filteredArray: Product[] = [];
           for (const p of products) {
