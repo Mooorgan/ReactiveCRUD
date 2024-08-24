@@ -19,7 +19,7 @@ export class ProductEditComponent implements OnInit {
     private router: Router,
     private destroy$: SubjectDestroyService,
     private fb: FormBuilder,
-    private products: ProductService,
+    private products: ProductService
   ) {}
 
   protected productForm = this.fb.group({
@@ -30,7 +30,6 @@ export class ProductEditComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    console.log(uuidV1());
     this.ar.url
       .pipe(
         takeUntil(this.destroy$),
@@ -40,7 +39,7 @@ export class ProductEditComponent implements OnInit {
             //@ts-ignore
             this.productForm.controls.id.setValue(uuidV1());
           }
-        }),
+        })
       )
       .subscribe();
 
@@ -57,15 +56,15 @@ export class ProductEditComponent implements OnInit {
           }
         }),
         concatMap((targetId) => {
-          return this.products.finalProducts$.pipe(
+          return this.products.products$.pipe(
             map((products) => {
               const filtered = products.filter((p) => {
                 return p.id === targetId;
               });
               return filtered;
-            }),
+            })
           );
-        }),
+        })
       )
       .subscribe((filteredProduct) => {
         if (filteredProduct.length) {
@@ -78,17 +77,10 @@ export class ProductEditComponent implements OnInit {
     this.router.navigate(['.'], { relativeTo: this.ar.parent });
   }
   submit() {
-    console.log(this.productForm);
     if (!this.productForm.valid) {
       return;
     }
 
-    // this.products.addProduct({
-    //   description: 'sdfsdaf',
-    //   id: 'asdasd',
-    //   name: 'sdfjsldkfj',
-    //   price: 3200,
-    // });
     if (this.pageLabel === 'Add') {
       //@ts-ignore
       this.products.addProduct(this.productForm.value);

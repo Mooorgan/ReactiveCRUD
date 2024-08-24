@@ -17,10 +17,10 @@
           class="product-name"
           (click)="navigateToProductDetails(product.id)"
         >
-          {{ product?.name | titlecase }}
+          {{ product.name | titlecase }}
         </span>
         <span>
-          <p>{{ product?.price | currencyCustom }}</p>
+          <p>{{ product.price | currencyCustom }}</p>
         </span>
         <span>
           <div class="buttons-container">
@@ -61,3 +61,5 @@
     </div>
   </div>
 </section>
+
+<!-- <a href [routerLink]="'/sldkjflskdjf'">NorFound</a> -->

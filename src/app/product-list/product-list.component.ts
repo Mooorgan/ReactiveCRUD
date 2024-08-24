@@ -10,29 +10,15 @@ import { Product } from 'src/types-and-interfaces/products/products.type';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent implements OnInit, AfterViewInit {
-  protected products$ = merge(
-    this.products.finalProducts$.pipe(
-      tap((r) => {
-        console.log(r);
-      }),
-    ),
-    this.products.filteredSearch$,
-  );
+export class ProductListComponent implements OnInit {
+  protected products$ = this.products.products$;
 
   constructor(
     private products: ProductService,
     private router: Router,
-    private ar: ActivatedRoute,
+    private ar: ActivatedRoute
   ) {}
-  ngAfterViewInit(): void {
-    // this.products.addProduct({
-    //   description: 'sdfsdaf',
-    //   id: 'kk',
-    //   name: 'sdfjsldkfj',
-    //   price: 3200,
-    // });
-  }
+
   ngOnInit(): void {}
 
   editProduct(id: string) {

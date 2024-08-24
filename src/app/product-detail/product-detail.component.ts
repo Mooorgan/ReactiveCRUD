@@ -17,22 +17,22 @@ export class ProductDetailComponent {
     private ar: ActivatedRoute,
     private router: Router,
     private destroy$: SubjectDestroyService,
-    private products: ProductService,
+    private products: ProductService
   ) {
     this.ar.paramMap
       .pipe(
         takeUntil(this.destroy$),
         map((params) => params.get('id')),
         concatMap((targetId) => {
-          return this.products.finalProducts$.pipe(
+          return this.products.products$.pipe(
             map((products) => {
               const filtered = products.filter((p) => {
                 return p.id === targetId;
               });
               return filtered;
-            }),
+            })
           );
-        }),
+        })
       )
       .subscribe((product) => {
         this.product = product[0];

@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  ProductService,
-  initialProducts,
-} from './services/product/product.service';
+import { ProductService } from './services/product/product.service';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +8,5 @@ import {
 })
 export class AppComponent implements OnInit {
   constructor(private products: ProductService) {}
-  ngOnInit(): void {
-    initialProducts.forEach((p) => {
-      this.products.addProduct(p);
-    });
-  }
+  ngOnInit(): void {}
 }

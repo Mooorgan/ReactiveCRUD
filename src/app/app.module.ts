@@ -15,6 +15,7 @@ import { ButtonsModule } from 'src/modules/buttons/buttons.module';
 import { ValidationMessageModule } from 'src/modules/validation-message/validation-message.module';
 import { HightlightDirective } from './directives/hightlight.directive';
 import { CurrencyFormatPipe } from './pipes/currency-custom.pipe';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CurrencyFormatPipe } from './pipes/currency-custom.pipe';
     ProductSearchComponent,
     HightlightDirective,
     CurrencyFormatPipe,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
