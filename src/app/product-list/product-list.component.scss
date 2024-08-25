@@ -1,4 +1,4 @@
-@use "../../scss/utils" as u;
+@use '../../scss/utils' as u;
 
 .product-list {
   padding: u.rem(24) u.rem(32);
@@ -44,6 +44,6 @@
 .buttons-container {
   display: flex;
   gap: u.rem(8);
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 }
