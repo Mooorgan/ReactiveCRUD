@@ -5,6 +5,7 @@ import { SubjectDestroyService } from '../services/subject-destroy/subject-destr
 import { v1 as uuidV1 } from 'uuid';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ProductService } from '../services/product/product.service';
+import { Product } from 'src/types-and-interfaces/products/products.type';
 
 @Component({
   selector: 'app-product-edit',
@@ -23,10 +24,10 @@ export class ProductEditComponent implements OnInit {
   ) {}
 
   protected productForm = this.fb.group({
-    name: [null, [Validators.required]],
-    description: [null, [Validators.required]],
-    price: [null, [Validators.required]],
-    id: [null],
+    name: [null as string | null, [Validators.required]],
+    description: [null as string | null, [Validators.required]],
+    price: [null as number | null, [Validators.required]],
+    id: [null as string | null, [Validators.required]],
   });
 
   ngOnInit(): void {
@@ -36,7 +37,6 @@ export class ProductEditComponent implements OnInit {
         tap((d) => {
           this.pageLabel = d[d.length - 1].path === 'add' ? 'Add' : 'Edit';
           if (this.pageLabel === 'Add') {
-            //@ts-ignore
             this.productForm.controls.id.setValue(uuidV1());
           }
         })
@@ -51,7 +51,6 @@ export class ProductEditComponent implements OnInit {
         }),
         tap((id) => {
           if (id) {
-            //@ts-ignore
             this.productForm.controls.id.setValue(id);
           }
         }),
@@ -68,7 +67,6 @@ export class ProductEditComponent implements OnInit {
       )
       .subscribe((filteredProduct) => {
         if (filteredProduct.length) {
-          //@ts-ignore
           this.productForm.setValue(filteredProduct[0]);
         }
       });
@@ -82,11 +80,9 @@ export class ProductEditComponent implements OnInit {
     }
 
     if (this.pageLabel === 'Add') {
-      //@ts-ignore
-      this.products.addProduct(this.productForm.value);
+      this.products.addProduct(this.productForm.value as Product);
     } else {
-      //@ts-ignore
-      this.products.editProduct(this.productForm.value);
+      this.products.editProduct(this.productForm.value as Product);
     }
     this.router.navigate(['.'], { relativeTo: this.ar.parent });
   }

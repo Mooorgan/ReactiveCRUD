@@ -19,11 +19,10 @@ export class ProductSearchComponent implements OnInit {
       .pipe(
         takeUntil(this.destroy$),
         tap((word) => {
-          //@ts-ignore
           this.searchWords.emit(word);
-        }),
+        })
       )
       .subscribe();
   }
-  protected search = new FormControl(null);
+  protected search = new FormControl<string>('', { nonNullable: true });
 }
