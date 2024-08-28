@@ -4,7 +4,7 @@
     type="text"
     class="search-container__input"
     [attr.placeholder]="placeholderString"
-    (input)="onChange($any($event.target).value)"
+    (input)="onChange(search.value)"
     (blur)="onTouched()"
     [disabled]="disabled"
   />

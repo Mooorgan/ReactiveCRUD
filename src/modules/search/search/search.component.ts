@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit, ControlValueAccessor {
   @ViewChild('search', { static: true })
   search!: ElementRef<HTMLInputElement>;
 
-  onChange: (value: string) => void = (value: string) => {};
+  onChange: (value: string) => void = (value: string) => undefined;
   onTouched: () => void = () => {};
   disabled = false;
   constructor() {}
