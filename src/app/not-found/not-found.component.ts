@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product/product.service';
 import { SubjectDestroyService } from '../services/subject-destroy/subject-destroy.service';
 import { takeUntil } from 'rxjs';
@@ -8,6 +8,7 @@ import { takeUntil } from 'rxjs';
   templateUrl: './not-found.component.html',
   styleUrls: ['./not-found.component.scss'],
   providers: [SubjectDestroyService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotFoundComponent implements OnInit {
   constructor(

@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { concatMap, filter, map, takeUntil, tap } from 'rxjs';
+import { map, switchMap, takeUntil, tap } from 'rxjs';
 import { SubjectDestroyService } from '../services/subject-destroy/subject-destroy.service';
 import { v1 as uuidV1 } from 'uuid';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
@@ -12,6 +17,7 @@ import { Product } from 'src/types-and-interfaces/products/products.type';
   templateUrl: './product-edit.component.html',
   styleUrls: ['./product-edit.component.scss'],
   providers: [SubjectDestroyService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductEditComponent implements OnInit {
   protected pageLabel: 'Add' | 'Edit' = 'Add';
@@ -20,7 +26,8 @@ export class ProductEditComponent implements OnInit {
     private router: Router,
     private destroy$: SubjectDestroyService,
     private fb: FormBuilder,
-    private products: ProductService
+    private products: ProductService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   protected productForm = this.fb.group({
@@ -41,7 +48,9 @@ export class ProductEditComponent implements OnInit {
           }
         })
       )
-      .subscribe();
+      .subscribe(() => {
+        // this.cdr.markForCheck();
+      });
 
     this.ar.paramMap
       .pipe(
@@ -54,7 +63,7 @@ export class ProductEditComponent implements OnInit {
             this.productForm.controls.id.setValue(id);
           }
         }),
-        concatMap((targetId) => {
+        switchMap((targetId) => {
           return this.products.products$.pipe(
             map((products) => {
               const filtered = products.filter((p) => {
@@ -63,12 +72,15 @@ export class ProductEditComponent implements OnInit {
               return filtered;
             })
           );
+        }),
+        tap((filteredProduct) => {
+          if (filteredProduct.length) {
+            this.productForm.setValue(filteredProduct[0]);
+          }
         })
       )
-      .subscribe((filteredProduct) => {
-        if (filteredProduct.length) {
-          this.productForm.setValue(filteredProduct[0]);
-        }
+      .subscribe(() => {
+        // this.cdr.markForCheck();
       });
   }
   navigateBack() {

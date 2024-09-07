@@ -13,9 +13,9 @@ import { filter, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-input-error',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './input-error-component.html',
   styleUrls: ['./input-error.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputErrorComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();

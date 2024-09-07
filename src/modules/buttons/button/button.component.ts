@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostBinding,
@@ -10,10 +11,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-button',
+  selector: 'button[button-component]',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   host: {},
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent implements OnInit {
   @HostBinding('class.sona-button')
@@ -27,7 +29,7 @@ export class ButtonComponent implements OnInit {
 
   constructor(
     private renderer: Renderer2,
-    private el: ElementRef,
+    private el: ElementRef
   ) {}
 
   ngOnInit(): void {
@@ -36,13 +38,13 @@ export class ButtonComponent implements OnInit {
       this.el.nativeElement,
       'flex-direction',
       flexDirection,
-      RendererStyleFlags2.DashCase,
+      RendererStyleFlags2.DashCase
     );
     this.renderer.setStyle(
       this.el.nativeElement,
       'column-gap',
       this.gap,
-      RendererStyleFlags2.DashCase,
+      RendererStyleFlags2.DashCase
     );
     this.renderer.setAttribute(this.el.nativeElement, 'role', 'button');
   }

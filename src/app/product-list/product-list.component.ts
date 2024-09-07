@@ -1,14 +1,13 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../services/product/product.service';
-import { Observable, Subject, map, merge, switchMap, tap } from 'rxjs';
-import { Product } from 'src/types-and-interfaces/products/products.type';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductListComponent implements OnInit {
   protected products$ = this.products.products$;

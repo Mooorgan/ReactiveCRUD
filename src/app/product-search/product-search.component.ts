@@ -1,4 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubjectDestroyService } from '../services/subject-destroy/subject-destroy.service';
 import { takeUntil, takeWhile, tap } from 'rxjs';
@@ -8,6 +14,7 @@ import { takeUntil, takeWhile, tap } from 'rxjs';
   templateUrl: './product-search.component.html',
   styleUrls: ['./product-search.component.scss'],
   providers: [SubjectDestroyService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductSearchComponent implements OnInit {
   @Output()
